@@ -1,8 +1,8 @@
 # sql_insert_writer
 
 [![PyPI Status](https://img.shields.io/pypi/v/sql_insert_writer.svg)](https://pypi.python.org/pypi/sql_insert_writer)
-[![CircleCI](https://circleci.com/gh/18F/sql_insert_writer.svg?style=svg)](https://circleci.com/gh/18F/sql_insert_writer)
-[![Code Climate](https://codeclimate.com/github/18F/sql_insert_writer/badges/gpa.svg)](https://codeclimate.com/github/18F/sql_insert_writer)
+[![CircleCI](https://circleci.com/gh/18F/sql_insert_writer.svg?style=svg)](https://circleci.com/gh/davehenton/sql_insert_writer)
+[![Code Climate](https://codeclimate.com/github/davehenton/sql_insert_writer/badges/gpa.svg)](https://codeclimate.com/github/davehenton/sql_insert_writer)
 [![Test Coverage](https://codeclimate.com/github/18F/sql_insert_writer/badges/coverage.svg)](https://codeclimate.com/github/18F/sql_insert_writer/coverage)
 [![Dependency Status](https://gemnasium.com/badges/github.com/18F/sql_insert_writer.svg)](https://gemnasium.com/github.com/18F/sql_insert_writer)
 
