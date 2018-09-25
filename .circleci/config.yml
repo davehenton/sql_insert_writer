@@ -11,6 +11,7 @@ jobs:
       - image: circleci/python:3.6.1
         environment:
           DATABASE_URL: "postgres://ubuntu@localhost:5432/circle_test"
+          CC_TEST_REPORTER_ID: 2c886792f54a69c0aef925d3a9dd080db57e6893b11db9b538dd75a0c16eeb33
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
