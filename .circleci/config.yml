@@ -1,22 +1,12 @@
-# Python CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-python/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
       - image: circleci/python:3.6.1
         environment:
           DATABASE_URL: "postgres://ubuntu@localhost:5432/circle_test"
+          # specifies the Code Climate Test Reporter ID. This is used only to identify the repo on Code Climate.
           CC_TEST_REPORTER_ID: 2c886792f54a69c0aef925d3a9dd080db57e6893b11db9b538dd75a0c16eeb33
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.6
 
     working_directory: ~/repo
 
@@ -46,8 +36,11 @@ jobs:
       - run:
           name: CodeClimate before-build
           command: |
+            # downloads the Code Climate test reporter as a static binary
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            # makes the test reporter executable 
             chmod +x ./cc-test-reporter
+            # notifies Code Climate of a pending report using `before-build`
             ./cc-test-reporter before-build
 
       # run tests!
@@ -59,11 +52,6 @@ jobs:
 
       - run:
           name: CodeClimate after-build
-          # Attempt to submit a report, but don't fail the build if this fails (`|| true`)
-          command: ./cc-test-reporter after-build -t coverage.py --exit-code $? || true
-          # For debugging upload of current failure to upload coverage results:
-          # command: ./cc-test-reporter -p ~/repo/sql_insert_writer after-build -t coverage.py --exit-code $?
+          # uploads test report to Code Climate using `after-build`
+          command: ./cc-test-reporter after-build -t coverage.py --exit-code $?
 
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
